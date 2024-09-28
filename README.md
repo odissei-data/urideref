@@ -69,4 +69,6 @@ Visit ```http://localhost:5000/person/1/info``` to see the RDF data for person 1
 
 On GitHub's codespace, add ```/person/1/info``` to the URL.
 
+We use as reference the W3C specification: [https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14](https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14)
+
 
