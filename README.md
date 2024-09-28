@@ -79,7 +79,53 @@ Register a W3ID: First, register your permanent URI namespace with the W3ID serv
 
 For example, you could register ```https://w3id.org/example/person/``` to forward to ```http://example.com/person/```.
 
+## Key Points in the Code (derefW3id.py):
+**W3ID Namespace**: The W3ID_BASE_URI variable holds the base URI for the W3ID namespace (e.g., ```https://w3id.org/example/person/```). This ensures that the URIs in your RDF use the persistent W3ID identifiers.
 
+**SPARQL Query**: The SPARQL query constructs triples where the subject is the W3ID URI (e.g., ```https://w3id.org/example/person/1```), ensuring the correct identifier is used in the RDF response.
+
+**W3ID Redirect Setup**: You must configure W3ID so that requests to ```https://w3id.org/example/person/1``` are redirected to your Flask app’s route (e.g., ```http://yourserver.com/person/1```). This can be done by creating a ```.htaccess``` file or similar redirect configuration in the W3ID GitHub repository.
+
+## Example W3ID Redirect:
+If you have registered ```https://w3id.org/example/person/``` with W3ID, you might set up a redirect so that a request to:
+```
+https://w3id.org/example/person/1
+```
+is forwarded to:
+```
+http://yourdomain.com/person/1
+```
+This allows the use of persistent URIs through W3ID, but the underlying resources are still hosted on your own infrastructure.
+
+## Example SPARQL Query:
+When the Flask app is accessed at ```http://localhost:5000/person/1/info```, it runs a SPARQL query like this:
+```
+PREFIX ex: <http://example.com/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+CONSTRUCT {
+    <https://w3id.org/example/person/1> a foaf:Person ;
+                                        foaf:name ?name ;
+                                        ex:age ?age ;
+                                        ex:occupation ?occupation .
+}
+WHERE {
+    <https://w3id.org/example/person/1> foaf:name ?name ;
+                                        ex:age ?age ;
+                                        ex:occupation ?occupation .
+}
+
+```
+This ensures that the RDF triples returned use the W3ID URI as the subject, making them persistent and globally dereferenceable through the W3ID service.
+
+## Summary:
+**W3ID Registration**: Ensure you register your namespace with W3ID.
+
+**URI Management**: Use W3ID URIs in your application to make your URIs stable and dereferenceable.
+
+**Triple Store Queries**: Fetch the actual RDF data dynamically from your triple store while using W3ID URIs.
+
+This approach combines the persistence of W3ID URIs with the dynamic querying capabilities of SPARQL and Python, ensuring that your RDF resources are both stable and flexible.
 
 We use as reference the W3C specification: [https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14](https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14)
 
