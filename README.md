@@ -1,3 +1,4 @@
+#URI dereferenceable
 A URI (Uniform Resource Identifier) is dereferenceable if it can be used to retrieve a resource over the web, typically via HTTP or HTTPS. To make a URI dereferenceable, follow these steps:
 
 1. Assign a URI to a Resource
@@ -19,5 +20,14 @@ For instance, if the URI http://example.com/person/123 represents a person, the 
 Summary:
 To make a URI dereferenceable, ensure it can be resolved to an actual resource by configuring a web server to respond to HTTP/HTTPS requests for that URI, and return appropriate status codes and content.
 
-
+## Running the code:
+```
 pip install Flask
+```
+Run the script: ```python first.py```.
+
+Open a browser and go to ```http://localhost:5000/person/1``` to see the dereferencing in action.
+
+On GitHub's codespace, add ```/person/1``` to the URL.
+
+This demonstrates how to use Python and Flask to make URIs dereferenceable, mapping them to actual resources or redirecting to related resources.
