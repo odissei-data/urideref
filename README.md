@@ -1,4 +1,6 @@
 # URI dereferenceable
+This demonstrates how to make URIs dereferenceable and generate RDF content dynamically by querying a triple store in Python using Flask and SPARQL.
+
 A URI (Uniform Resource Identifier) is dereferenceable if it can be used to retrieve a resource over the web, typically via HTTP or HTTPS. To make a URI dereferenceable, follow these steps:
 
 1. Assign a URI to a Resource
@@ -20,9 +22,9 @@ For instance, if the URI http://example.com/person/123 represents a person, the 
 Summary:
 To make a URI dereferenceable, ensure it can be resolved to an actual resource by configuring a web server to respond to HTTP/HTTPS requests for that URI, and return appropriate status codes and content.
 
-## Running the code:
+## Running the code (simple one):
 ```
-pip install Flask rdflib
+pip install Flask SPARQLWrapper rdflib
 ```
 Run the script: ```python first.py```.
 
@@ -30,4 +32,41 @@ Open a browser and go to ```http://localhost:5000/person/1``` to see the derefer
 
 On GitHub's codespace, add ```/person/1``` to the URL.
 
-This demonstrates how to use Python and Flask to make URIs dereferenceable, mapping them to actual resources or redirecting to related resources.
+# With a triple store:
+## Explanation for derefTStore.py:
+**SPARQLWrapper**: This library sends SPARQL queries to the triple store (a SPARQL endpoint, in this case). We use the ```CONSTRUCT``` query to retrieve RDF triples related to a person and return the data in Turtle format.
+
+**SPARQL Query**: The query dynamically constructs RDF triples about a person (name, age, and occupation) from the triple store using the ```foaf:name, ex:age, and ex:occupation``` properties.
+
+**SPARQL Endpoint**: The SPARQL_ENDPOINT variable points to your triple store. In this example, it is assumed you are using a local instance of a triple store (e.g., GraphDB, Blazegraph, or Fuseki) at ```http://localhost:7200/repositories/my-repo```.
+
+**Returning Turtle Format**: The query results are returned in Turtle format, and the Flask app sends them back with the appropriate ```MIME type (text/turtle)```.
+
+## Triple Store Setup:
+For this to work, you need a triple store with data already loaded, and the person data should follow the foaf and ex ontologies. 
+
+For example, you can load RDF data like this into your triple store:
+```
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+
+<http://example.com/person/1> a foaf:Person ;
+    foaf:name "John Doe" ;
+    ex:age 30 ;
+    ex:occupation "Engineer" .
+
+<http://example.com/person/2> a foaf:Person ;
+    foaf:name "Jane Smith" ;
+    ex:age 25 ;
+    ex:occupation "Doctor" .
+```
+## Running the Code:
+Ensure your triple store is running and contains the relevant RDF data.
+
+Run the script: ```python derefTStore.py```.
+
+Visit ```http://localhost:5000/person/1/info``` to see the RDF data for person 1 in Turtle format, dynamically fetched from the triple store.
+
+On GitHub's codespace, add ```/person/1/info``` to the URL.
+
+
