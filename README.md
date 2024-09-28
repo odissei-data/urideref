@@ -18,3 +18,6 @@ If a URI represents a concept (e.g., a person or a place in a knowledge graph), 
 For instance, if the URI http://example.com/person/123 represents a person, the server might return a 303 redirect to http://example.com/person/123.html, which provides human-readable information about that person.
 Summary:
 To make a URI dereferenceable, ensure it can be resolved to an actual resource by configuring a web server to respond to HTTP/HTTPS requests for that URI, and return appropriate status codes and content.
+
+
+pip install Flask
