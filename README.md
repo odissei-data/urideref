@@ -69,6 +69,18 @@ Visit ```http://localhost:5000/person/1/info``` to see the RDF data for person 1
 
 On GitHub's codespace, add ```/person/1/info``` to the URL.
 
+# With W3id
+W3ID (Permanent Identifiers for the Web) is a service that provides stable, long-term identifiers for resources on the web. It is often used in the Linked Data community to ensure that URIs remain persistent, even if the underlying infrastructure changes. You can leverage W3ID to make your RDF URIs stable and dereferenceable.
+
+To use W3ID in combination with a triple store and the Flask app, follow these steps:
+
+## Steps:
+Register a W3ID: First, register your permanent URI namespace with the W3ID service. This usually involves setting up a redirect that forwards requests from a w3id.org URI to your actual server.
+
+For example, you could register ```https://w3id.org/example/person/``` to forward to ```http://example.com/person/```.
+
+
+
 We use as reference the W3C specification: [https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14](https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14)
 
 
