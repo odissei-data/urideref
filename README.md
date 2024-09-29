@@ -127,6 +127,24 @@ This ensures that the RDF triples returned use the W3ID URI as the subject, maki
 
 This approach combines the persistence of W3ID URIs with the dynamic querying capabilities of SPARQL and Python, ensuring that your RDF resources are both stable and flexible.
 
+# Complete example like DBpedia dereferencing
+
+```
+python derefHTMLTSinMemory.py
+```
+
+On the GitHub codespace, add ```/person/1``` to the URL to see an example of data already loaded in a local triple store in memory.
+
+## Access RDF Data (localhost):
+
+Open your browser and go to:
+
+```http://localhost:5000/person/1``` for John Doe
+
+```http://localhost:5000/person/2``` for Jane Smith
+
+```http://localhost:5000/person/3``` for Alice Johnson
+
 We use as reference the W3C specification: [https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14](https://www.w3.org/2001/tag/doc/httpRange-14/2007-05-31/HttpRange-14)
 
 
