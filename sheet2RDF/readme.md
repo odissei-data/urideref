@@ -1,4 +1,5 @@
-pip install rdflib gspread oauth2client
+pip install pandas rdflib openpyxl
+
 
  steps:
 
