@@ -1,0 +1,27 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://https://sites.google.com/view/andre-valdestilhas> a foaf:Person ;
+    foaf:name "Andre Valdestilhas" ;
+    foaf:nationality <https://dbpedia.org/resource/Brazilians> ;
+    schema:affiliation <https://dbpedia.org/resource/Vrije_Universiteit_Amsterdam> ;
+    schema:fieldOfStudy <https://dbpedia.org/resource/Semantic_Web> ;
+    schema:hasInterest "Teaching" ;
+    schema:hasInterest "Research" ;
+    schema:hasInterest "Playing guitar" ;
+    schema:workExperience <https://sites.google.com/view/andre-valdestilhas/htwk_experience> ;
+    schema:workExperience <https://sites.google.com/view/andre-valdestilhas/bam_experience> ;
+    schema:organizes <https://semats.aksw.org/> .
+
+<https://sites.google.com/view/andre-valdestilhas/htwk_experience> a schema:WorkExperience ;
+    schema:jobTitle "Software Engineering Teacher" ;
+    schema:employer <https://www.htwk-leipzig.de/> .
+
+<https://sites.google.com/view/andre-valdestilhas/bam_experience> a schema:WorkExperience ;
+    schema:jobTitle "Researcher" ;
+    schema:employer <http://bam.de> .
+
+<https://semats.aksw.org/> a schema:Event ;
+    schema:name "SeMats Workshop" ;
+    schema:topic "Intersection of Semantic Web and Materials Science" .
