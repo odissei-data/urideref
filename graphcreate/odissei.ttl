@@ -1,6 +1,6 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix odissei: <http://example.com/odissei#> .  # Replace with your actual ODISSEI namespace
+@prefix odissei: <https://w3id.org/odissei/ns/> .  # Replace with your actual ODISSEI namespace
 
 # Classes
 odissei:ODISSEI rdf:type rdfs:Class .
