@@ -7,7 +7,7 @@ g = Graph()
 g.parse("odissei.ttl", format="ttl")
 
 # Define namespaces
-odissei = Namespace("http://example.com/odissei#")
+odissei = Namespace("https://w3id.org/odissei/ns/")
 rdfs = Namespace("http://www.w3.org/2000/01/rdf-schema#")
 
 # Extract classes and relationships
